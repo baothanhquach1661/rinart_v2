@@ -102,10 +102,25 @@
                                 SKU:
                                 <span>printox-016</span>
                             </li>
+                            @if($product->variants()->exists())
                             <li>
-                                Categories:
-                                <span> Bags, Calendars</span>
+                                <ul>
+                                    @foreach ($product->variants as $productVariant)
+                                        <li>
+                                            <label for="variant-{{ $productVariant->id }}">{{ $productVariant->name }}</label>
+                                            <select name="variant[{{ $productVariant->id }}]" id="variant-{{ $productVariant->id }}">
+                                                <option value="">Select {{ $productVariant->name }}</option>
+                                                @foreach($productVariant->variantItems as $variantItem)
+                                                    <option value="{{ $variantItem->id }}">
+                                                        {{ $variantItem->name }} (+ ${{ $variantItem->price }})
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </li>
+                            @endif
                         </ul>
                         <div class="rr-shop-details__social">
                             <span>Share:</span>

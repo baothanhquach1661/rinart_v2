@@ -143,7 +143,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="rr-fea-product__content">
-                                                    <h4 class="rr-fea-product__title-sm"><a href="shop.html">{{ $product->name }}</a></h4>
+                                                    <h4 class="rr-fea-product__title-sm"><a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></h4>
                                                     <div class="rr-product-content-price">
                                                         <span class="product-item-3-price">
                                                             <span class="price">
