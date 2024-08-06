@@ -10,7 +10,7 @@
     <!-- feature area end -->
 
     <!-- small feature3 -area start -->
-    @include('frontend.components.small-feature')
+    {{-- @include('frontend.components.small-feature') --}}
     <!-- small feature-3-area end -->
 
     <!-- feature product area start -->
