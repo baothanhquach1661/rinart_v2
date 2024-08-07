@@ -29,8 +29,7 @@ class HomeController extends Controller
 
     function showProduct(string $slug)
     {
-        $categories = Category::where(['status' => 1, 'show_at_home' => 1])->get();
         $product = Product::with(['productGallery', 'variants', 'category'])->where('slug', $slug)->firstOrFail();
-        return view('frontend.pages.product-detail', compact('categories', 'product'));
+        return view('frontend.pages.product-detail', compact('product'));
     }
 }

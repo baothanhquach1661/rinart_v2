@@ -58,8 +58,9 @@
                                                 <i class="fa-solid fa-chevron-down dropdown-icon" style="font-size:10px;"></i>
                                             </a>
                                             <ul class="submenu">
-                                                <li><a href="service.html">In Tem Nhãn</a></li>
-                                                <li><a href="service-details.html">In Decal</a></li>
+                                                @foreach ($categories as $category)
+                                                    <li><a href="service.html">{{ $category->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
 

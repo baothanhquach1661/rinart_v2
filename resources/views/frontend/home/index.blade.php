@@ -24,8 +24,4 @@
     <!-- blog-news area start -->
     @include('frontend.components.blog')
     <!-- blog-news area end -->
-
-    <!-- happy-customer start-->
-    {{-- @include('frontend.components.happy-customer') --}}
-    <!-- happy-customer end-->
 @endsection

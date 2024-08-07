@@ -39,6 +39,10 @@
                             <div class="main-menu">
                                 <nav id="mobile-menu" class="mobile-menu">
                                     <ul>
+                                        <li class="active">
+                                            <a href="{{ url('/') }}">Trang Chủ</a>
+                                        </li>
+
                                         <li class="has-dropdown">
                                             <a href="service.html">Sản Phẩm
                                                 <i class="fa-solid fa-chevron-down dropdown-icon" style="font-size:10px;"></i>
@@ -54,8 +58,9 @@
                                                 <i class="fa-solid fa-chevron-down dropdown-icon" style="font-size:10px;"></i>
                                             </a>
                                             <ul class="submenu">
-                                                <li><a href="service.html">In Tem Nhãn</a></li>
-                                                <li><a href="service-details.html">In Decal</a></li>
+                                                @foreach ($categories as $category)
+                                                    <li><a href="service.html">{{ $category->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
 
