@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
 use App\Http\Controllers\Admin\ProductVariantItemController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 
@@ -60,6 +61,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::delete('product-variant-item-delete/{variantItemId}', [ProductVariantItemController::class, 'destroy'])->name('product.variant-item.destroy');
 
     Route::put('product-variant-item/change-status', [ProductVariantItemController::class, 'changeStatus'])->name('product.variant-item.change-status');
+
+
+    /* Setting Routes */
+    Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::put('general-setting', [SettingController::class, 'updateGeneralSetting'])->name('general-setting.update');
 
 });
 
