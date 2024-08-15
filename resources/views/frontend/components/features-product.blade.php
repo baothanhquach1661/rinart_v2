@@ -91,15 +91,15 @@
                                                             @if($product->discount_price > 0)
                                                                 <span class="woocs_price_code d-flex gap-6">
                                                                     <del aria-hidden="true">
-                                                                        <span class="woocommerce-price-amount amount">${{ $product->price }}</span>
+                                                                        <span class="woocommerce-price-amount amount">{{ currencyPosition($product->price) }}</span>
                                                                     </del>
                                                                     <span class="woocommerce-price-amount amount body-color">
-                                                                        ${{ $product->discount_price }}
+                                                                        {{ currencyPosition($product->discount_price) }}
                                                                     </span>
                                                                 </span>
                                                             @else
                                                                 <span class="woocommerce-price-amount amount body-color">
-                                                                    ${{ $product->price }}
+                                                                    {{ currencyPosition($product->price) }}
                                                                 </span>
                                                             @endif
                                                         </span>
@@ -150,15 +150,15 @@
                                                                 @if($product->discount_price > 0)
                                                                     <span class="woocs_price_code d-flex gap-6">
                                                                         <del aria-hidden="true">
-                                                                            <span class="woocommerce-price-amount amount">${{ $product->price }}</span>
+                                                                            <span class="woocommerce-price-amount amount">{{ currencyPosition($product->price) }}</span>
                                                                         </del>
                                                                         <span class="woocommerce-price-amount amount body-color">
-                                                                            ${{ $product->discount_price }}
+                                                                            {{ currencyPosition($product->discount_price) }}
                                                                         </span>
                                                                     </span>
                                                                 @else
                                                                     <span class="woocommerce-price-amount amount body-color">
-                                                                        ${{ $product->price }}
+                                                                        {{ currencyPosition($product->price) }}
                                                                     </span>
                                                                 @endif
                                                             </span>
