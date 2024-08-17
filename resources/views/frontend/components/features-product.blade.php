@@ -106,8 +106,9 @@
                                                     </span>
                                                 </div>
                                                 <div class="rr-fea-product__link-box">
-                                                    <a href="cart.html" class="cart-button icon-btn button rr-btn-cart">
-                                                        <span></span>Add to Cart
+                                                    <a href="javascript:;" onclick="loadProductModal('{{ $product->id }}')"
+                                                        class="cart-button icon-btn button rr-btn-cart">
+                                                        Add to Cart
                                                     </a>
                                                 </div>
                                             </div>
@@ -165,8 +166,9 @@
                                                         </span>
                                                     </div>
                                                     <div class="rr-fea-product__link-box">
-                                                        <a href="cart.html" class="cart-button icon-btn button rr-btn-cart">
-                                                            <span></span>Add to Cart
+                                                        <a href="javascript:;" onclick="loadProductModal('{{ $product->id }}')"
+                                                            class="cart-button icon-btn button rr-btn-cart">
+                                                            Add to Cart
                                                         </a>
                                                     </div>
                                                 </div>
@@ -182,3 +184,4 @@
         </div>
     </div>
 </section>
+

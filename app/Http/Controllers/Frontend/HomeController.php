@@ -27,9 +27,20 @@ class HomeController extends Controller
             ));
     }
 
+
     function showProduct(string $slug)
     {
         $product = Product::with(['productGallery', 'variants', 'category'])->where('slug', $slug)->firstOrFail();
-        return view('frontend.pages.product-detail', compact('product'));
+        $relatedProducts = Product::where('category_id', $product->category_id)
+                            ->where('id', '!=', $product->id)->take(8)->latest()->get();
+        return view('frontend.pages.product-detail', compact('product', 'relatedProducts'));
+    }
+
+
+    function loadProductModal($productId)
+    {
+        $product = Product::with(['variants'])->findOrFail($productId);
+
+        return view('frontend.layouts.ajax-files.product-popup-modal', compact('product'))->render();
     }
 }

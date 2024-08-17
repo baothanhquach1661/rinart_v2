@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\ProfileController;
@@ -45,5 +46,10 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
+/* Product all routes */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{slug}', [HomeController::class, 'showProduct'])->name('product.show');
+
+Route::get('/load-product-modal/{productId}', [HomeController::class, 'loadProductModal'])->name('load-product-modal');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+

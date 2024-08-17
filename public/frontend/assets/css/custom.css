@@ -1,0 +1,172 @@
+/* Add these styles to your existing CSS */
+.overlay-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.loader {
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 30px, 0 -30px;
+    border-radius: 4px;
+    background: currentColor;
+    display: block;
+    margin: -50px auto 0;
+    position: relative;
+    color: #FFF;
+    transform: translateY(30px);
+    box-sizing: border-box;
+    animation: animloader 2s ease infinite;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 30px, 0 -30px;
+    border-radius: 4px;
+    background: currentColor;
+    color: #FFF;
+    position: absolute;
+    left: 30px;
+    top: 0;
+    animation: animloader 2s 0.2s ease infinite;
+}
+
+.loader::before {
+    animation-delay: 0.4s;
+    left: 60px;
+}
+
+@keyframes animloader {
+    0% {
+        top: 0;
+        color: white;
+    }
+
+    50% {
+        top: 30px;
+        color: rgba(255, 255, 255, 0.2);
+    }
+
+    100% {
+        top: 0;
+        color: white;
+    }
+}
+
+
+/* Styling for the custom select box */
+.select-custom {
+    width: 100%;
+    padding: 10px;
+    margin-top:5px;
+    font-size: 15px;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    appearance: none; /* Remove default arrow */
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Add custom arrow for the select box */
+.select-custom::after {
+    content: '▼';
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+    margin-top:5px;
+}
+
+/* Styling for the custom dropdown options */
+.option-custom {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Hover and focus effects */
+.select-custom:hover, .select-custom:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.ul-custom {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap if they can't fit on one line */
+    gap: 15px; /* Space between the items */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.li-custom {
+    flex: 1; /* Each item will take up equal space */
+    min-width: 200px; /* Adjust this to fit your design */
+}
+
+.rr-btn-custom {
+    padding: 12px 24px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff5722; /* Orange color for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Keep the button inline within its container */
+}
+
+.rr-btn-custom:hover {
+    background-color: #e64a19; /* Darker orange on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.rr-btn-custom:active {
+    background-color: #d84315; /* Even darker orange on click */
+    transform: translateY(1px); /* Slight press effect */
+}
+
+.total-price {
+    padding: 15px 10px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #001D08;
+}
+
+
+

@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
+
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/toastr.min.css') }}">
 
     <style>
@@ -54,9 +56,30 @@
 
 <body>
 
+    <div class="overlay-container d-none">
+        <div class="overlay">
+            <span class="loader"></span>
+        </div>
+    </div>
+
+    <!-- Cart Modal Popup -->
+    <div class="modal" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body load_product_modal_body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-<![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
 
     <!-- preloader start -->
     {{-- @include('frontend.layouts.preloader') --}}
@@ -133,6 +156,8 @@
             toastr.success("{{ session('success') }}");
         @endif
     </script>
+
+    @include('frontend.layouts.global-scripts')
 
     @stack('scripts')
 
