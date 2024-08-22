@@ -45,9 +45,10 @@
                 </div>
                 <nav class="profile-nav">
                     <ul>
-                        <li><a href="#profile" class="tab-link active" data-tab="profile">Profile</a></li>
-                        <li><a href="#orders" class="tab-link" data-tab="orders">Order History</a></li>
-                        <li><a href="#settings" class="tab-link" data-tab="settings">Account Settings</a></li>
+                        <li><a href="#" class="tab-link-profile active" data-tab="profile">Profile</a></li>
+                        <li><a href="#" class="tab-link-profile" data-tab="shipping-address">Shipping Address</a></li>
+                        <li><a href="#" class="tab-link-profile" data-tab="orders">Order History</a></li>
+                        <li><a href="#" class="tab-link-profile" data-tab="settings">Account Settings</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
@@ -60,7 +61,7 @@
                 </nav>
             </div>
             <div class="profile-content">
-                <section id="profile" class="tab-content active">
+                <section id="profile" class="tab-content-profile active">
                     <h2>Profile Information</h2>
                     <form method="POST" action="{{ route('user-profile.update') }}">
                         @csrf
@@ -74,34 +75,12 @@
                         <button type="submit">SAVE</button>
                     </form>
                 </section>
-                <section id="orders" class="tab-content">
-                    <h2>Order History</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#1234</td>
-                                <td>01/20/2023</td>
-                                <td>Shipped</td>
-                                <td>$99.99</td>
-                            </tr>
-                            <tr>
-                                <td>#5678</td>
-                                <td>02/14/2023</td>
-                                <td>Processing</td>
-                                <td>$49.99</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-                <section id="settings" class="tab-content">
+
+                @include('frontend.dashboard.section.shipping-address')
+
+                @include('frontend.dashboard.section.order')
+
+                <section id="settings" class="tab-content-profile">
                     <h2>Account Settings</h2>
                     <form action="{{ route('user-password.update') }}" method="POST">
                         @csrf
@@ -125,15 +104,21 @@
 @push('scripts')
     <script>
         $(document).ready(function(){
-            $('.tab-link').click(function(e){
+            // Hide all tab contents except the first one
+            $('.tab-content-profile').hide();
+            $('.tab-content-profile.active').show();
+
+            $('.tab-link-profile').click(function(e){
                 e.preventDefault();
                 var tab = $(this).data('tab');
 
-                $('.tab-link').removeClass('active');
+                // Remove active class from all links and contents
+                $('.tab-link-profile').removeClass('active');
                 $(this).addClass('active');
 
-                $('.tab-content').removeClass('active');
-                $('#' + tab).addClass('active');
+                // Hide all tab contents and show the active one
+                $('.tab-content-profile').removeClass('active').hide();
+                $('#' + tab).addClass('active').show();
             });
         });
     </script>

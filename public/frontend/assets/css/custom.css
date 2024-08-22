@@ -168,5 +168,48 @@
     color: #001D08;
 }
 
+.tab-content-profile {
+    display: none;
+}
+
+.tab-content-profile.active {
+    display: block;
+}
+
+.address-title {
+    margin-bottom: 15px;
+    color: #1E7F5C;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.order-button-payment {
+    display: flex;
+    gap: 10px; /* Adjust the gap between the buttons as needed */
+    justify-content: center; /* Centers the buttons horizontally */
+}
+
+.order-button-payment a, .order-button-payment button {
+    flex: 1; /* Distributes the buttons evenly */
+    text-align: center; /* Centers the text within the buttons */
+}
+
+.coupon-code {
+    color: #1f7f5c;
+    background-color: #fff;
+    border: 1px dashed #186549;
+    padding: 0px 5px;
+    font-size: 14px;
+}
+
+.coupon-checkout {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-end;
+    font-size: 15px;
+    line-height: 26px;
+}
 
 

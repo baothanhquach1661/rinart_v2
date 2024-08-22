@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CtaController;
+use App\Http\Controllers\Admin\DeliveryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
@@ -66,6 +68,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     /* Setting Routes */
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     Route::put('general-setting', [SettingController::class, 'updateGeneralSetting'])->name('general-setting.update');
+
+
+    /* Coupon routes */
+    Route::resource('coupon', CouponController::class);
+
+
+    /* Delivery routes */
+    Route::resource('delivery', DeliveryController::class);
 
 });
 

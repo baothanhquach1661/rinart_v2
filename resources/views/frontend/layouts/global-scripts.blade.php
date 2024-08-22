@@ -1,4 +1,14 @@
 <script>
+    function showLoader(){
+        $('.overlay-container').removeClass('d-none');
+        $('.overlay').addClass('active');
+    }
+
+    function hideLoader(){
+        $('.overlay-container').removeClass('active');
+        $('.overlay').addClass('d-none');
+    }
+
     function loadProductModal(productId) {
         $.ajax({
             method: 'GET',
@@ -38,6 +48,12 @@
             return formattedPrice + currencySymbol;
         }
     }
+
+    /* get current cart total */
+    function getCartTotal(){
+        return parseInt("{{ cartTotal() }}");
+    }
+
 
 
 </script>

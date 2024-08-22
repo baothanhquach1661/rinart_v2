@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
+use App\Models\Delivery;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +14,9 @@ class UserProfileController extends Controller
 {
     function dashboard() : View
     {
-        return view('frontend.dashboard.index');
+        $delivery_areas = Delivery::where('status', 1)->get();
+        $user_shipping_address = Address::where('user_id', Auth::user()->id)->first();
+        return view('frontend.dashboard.index', compact('delivery_areas', 'user_shipping_address'));
     }
 
     function userProfileUpdate(Request $request)
@@ -66,4 +70,31 @@ class UserProfileController extends Controller
 
         return redirect()->back()->with('success', 'Password updated successfully!');
     }
+
+
+    function userShippingAddressUpdate(Request $request)
+    {
+        $validateData = $request->validate([
+            'delivery_area' => ['required', 'integer'],
+            'full_name' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'string'],
+            'address' => ['required', 'string'],
+        ]);
+
+        Address::updateOrCreate(
+            ['user_id' => auth()->user()->id],
+            [
+                'delivery_area_id' => $request->delivery_area,
+                'full_name' => $request->full_name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]
+        );
+
+        return redirect()->back()->with('success', 'Profile has been updated successfully!');
+    }
+
+
 }

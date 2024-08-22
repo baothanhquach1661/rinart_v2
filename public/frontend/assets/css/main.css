@@ -12534,6 +12534,26 @@ p.lost-password a:hover {
   border-color: var(--clr-common-heading);
 }
 
+.coupon-info p.form-row-first select,
+.coupon-info p.form-row-last select {
+  border: 1px solid #E2E2E2;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 0 14px;
+  max-width: 100%;
+  padding: 0 0 0 10px;
+  width: 100%;
+  outline: none;
+  -webkit-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+.coupon-info p.form-row-first select:focus,
+.coupon-info p.form-row-last select:focus {
+  border-color: var(--clr-common-heading);
+}
+
 .coupon-info p.form-row input[type=submit]:hover,
 p.checkout-coupon input[type=submit]:hover {
   background: #3e976c none repeat scroll 0 0;
@@ -18728,6 +18748,25 @@ html .ui-button.ui-state-disabled:active {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    margin-left: 0px;
+}
+
+.profile-content form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 0px;
+}
+
+.profile-content form select {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 0px;
 }
 
 .profile-content form button {

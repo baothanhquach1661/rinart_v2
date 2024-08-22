@@ -17,13 +17,11 @@ class HomeController extends Controller
         $sliders = Slider::where('status', 1)->get();
         $cta = Cta::first();
         $categories = Category::where(['status' => 1, 'show_at_home' => 1])->get();
-        $test_product = Product::where(['status' => 1, 'is_event' => 1])->get();
         return view('frontend.home.index',
             compact(
                 'sliders',
                 'cta',
-                'categories',
-                'test_product'
+                'categories'
             ));
     }
 

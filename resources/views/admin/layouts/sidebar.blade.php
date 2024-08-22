@@ -82,6 +82,22 @@
 
                 <!-- Start::slide -->
                 <li class="slide">
+                    <a href="{{ route('admin.coupon.index') }}" class="side-menu__item">
+                        <span class="side-menu__label">Coupon</span>
+                    </a>
+                </li>
+                <!-- End::slide -->
+
+                <!-- Start::slide -->
+                <li class="slide">
+                    <a href="{{ route('admin.delivery.index') }}" class="side-menu__item">
+                        <span class="side-menu__label">Delivery Area</span>
+                    </a>
+                </li>
+                <!-- End::slide -->
+
+                <!-- Start::slide -->
+                <li class="slide">
                     <a href="{{ route('admin.setting.index') }}" class="side-menu__item">
                         <span class="side-menu__label">Setting</span>
                     </a>

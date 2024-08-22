@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="soukhinkhan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/logo/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
