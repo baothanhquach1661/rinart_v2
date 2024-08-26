@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -39,6 +40,15 @@ Route::group(['middleware' => 'auth'], function(){
     /* Checkout Page */
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::get('checkout-coupon-remove', [CheckoutController::class, 'removeCoupon'])->name('checkout-coupon.remove');
+
+    /* Procceed Payment Button */
+    Route::post('checkout-to-payment', [CheckoutController::class, 'checkoutToPayment'])->name('checkout-to-payment');
+
+    /* Payment Route */
+    Route::get('payment', [PaymentController::class, 'index'])->name('payment.index');
+
+    /* Paypal Payment Route */
+    Route::post('paypal-payment', [PaymentController::class, 'makePaypalPayment'])->name('make-paypal.payment');
 });
 
 require __DIR__.'/auth.php';

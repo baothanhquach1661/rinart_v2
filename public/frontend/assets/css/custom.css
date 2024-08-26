@@ -195,9 +195,9 @@
 }
 
 .coupon-code {
-    color: #1f7f5c;
+    color: #1E2A5E;
     background-color: #fff;
-    border: 1px dashed #186549;
+    border: 1px dashed #1E2A5E;
     padding: 0px 5px;
     font-size: 14px;
 }
@@ -211,5 +211,96 @@
     font-size: 15px;
     line-height: 26px;
 }
+
+.img-qr-css {
+    width: 200px; /* Adjust the width of the QR code */
+    height: auto;
+    margin: 20px 0; /* Add space around the QR code */
+}
+
+.content-ck {
+    font-size: 14px; /* Slightly increase the font size */
+    color: #333333; /* Use a darker color for better readability */
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.transfer-code {
+    background-color: #1E2A5E; /* Green background for the transfer code */
+    color: #ffffff; /* White text color */
+    padding: 3px 8px; /* Add padding to the transfer code */
+    border-radius: 4px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+}
+
+.note-text {
+    font-size: 13px;
+    color: #555555;
+    margin-top: 20px;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.text-danger-info {
+    color: #dc3545; /* Bootstrap danger color */
+    font-weight: 700;
+}
+
+.input-radio {
+    margin-right: 10px; /* Space between the radio button and text */
+    width: 20px; /* Adjust width of the radio button */
+    height: 20px; /* Adjust height of the radio button */
+    accent-color: #1E2A5E; /* Green color when selected */
+    cursor: pointer;
+}
+
+.accordion-button {
+    display: flex;
+    align-items: center;
+    padding-left: 0; /* Remove extra padding from the left */
+    background: none; /* Remove the default background */
+    border: none; /* Remove the default border */
+    box-shadow: none; /* Remove the default box-shadow */
+    outline: none; /* Remove the default outline */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.accordion-button:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.accordion-button:hover {
+    color: #1E2A5E; /* Change text color on hover */
+}
+
+.payment-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-card {
+    width: 150px;
+    height: 100px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.payment-card img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+
+
 
 

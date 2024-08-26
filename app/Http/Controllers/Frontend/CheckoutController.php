@@ -32,4 +32,19 @@ class CheckoutController extends Controller
 
         return redirect()->back()->with('success', 'Coupon has been removed!');
     }
+
+    function checkoutToPayment(Request $request)
+    {
+        $request->validate([
+            'id' => ['required', 'integer']
+        ]);
+
+        $address = Address::with('deliveryArea')->findOrFail($request->id);
+        $selectedAddress = $address->address.', Khu Vực: '.$address->deliveryArea?->area_name;
+
+        session()->put('shipping_address', $selectedAddress);
+        session()->put('delivery_fee', $address->deliveryArea?->delivery_fee);
+
+        return response(['redirect_url' => route('payment.index')]);
+    }
 }

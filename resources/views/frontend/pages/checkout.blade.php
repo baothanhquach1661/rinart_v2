@@ -95,14 +95,16 @@
                             <div class="coupon-info">
                                 <form action="" id="coupon_form" class="checkout-coupon">
                                     <div class="d-flex">
-                                    <input name="coupon" value="{{ session()->has('coupon') ? session()->get('coupon')['code'] : '' }}"
+                                        <input name="coupon"
+                                            value="{{ session()->has('coupon') ? session()->get('coupon')['code'] : '' }}"
                                             id="coupon_code" type="text" placeholder="Nhập mã coupon">
-                                    @if(isset(session()->get('coupon')['code']))
-                                    <a href="{{ route('checkout-coupon.remove') }}" style="margin-left: 5px; height: 60px;" class="rr-btn">Remove</a>
-                                    @else
-                                    <button type="submit" style="margin-left: 5px; height: 60px;"
-                                        class="rr-btn">Submit</button>
-                                    @endif
+                                        @if (isset(session()->get('coupon')['code']))
+                                            <a href="{{ route('checkout-coupon.remove') }}"
+                                                style="margin-left: 5px; height: 60px;" class="rr-btn">Remove</a>
+                                        @else
+                                            <button type="submit" style="margin-left: 5px; height: 60px;"
+                                                class="rr-btn">Submit</button>
+                                        @endif
                                     </div>
                                 </form>
                             </div>
@@ -118,72 +120,73 @@
     <!-- checkout-area start -->
     <section class="checkout-area pb-70">
         <div class="container container-small">
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="checkbox-form">
-                            <h3 class="mb-10">Thông Tin Giao Hàng</h3>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="lan-select lan-select-6">
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <h6>Khu Vực:
-                                                    <span id="address">
-                                                        {{ @$shipping_address->deliveryArea?->area_name }}
-                                                    </span>
-                                                </h6>
-                                            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="checkbox-form">
+                        <h3 class="mb-10">Thông Tin Giao Hàng</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="lan-select lan-select-6">
+                                    <div class="col-md-12">
+                                        <div class="checkout-form-list">
+                                            <h6>Khu Vực:
+                                                <input type="hidden" class="shipping_address_id"
+                                                    value="{{ $shipping_address?->id }}">
+                                                <span id="address">
+                                                    {{ @$shipping_address->deliveryArea?->area_name }}
+                                                </span>
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Họ Tên<span class="required">*</span></label>
-                                        <input type="text" value="{{ $shipping_address?->full_name }}">
-                                    </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Họ Tên<span class="required">*</span></label>
+                                    <input type="text" value="{{ $shipping_address?->full_name }}">
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list">
-                                        <label>Tên Công Ty</label>
-                                        <input type="text" placeholder="">
-                                    </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Tên Công Ty</label>
+                                    <input type="text" placeholder="">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list">
-                                        <label>Email Address <span class="required">*</span></label>
-                                        <input type="email" value="{{ $shipping_address?->email }}">
-                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Email Address <span class="required">*</span></label>
+                                    <input type="email" value="{{ $shipping_address?->email }}">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list">
-                                        <label>Phone <span class="required">*</span></label>
-                                        <input type="text" value="{{ $shipping_address?->phone }}">
-                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Phone <span class="required">*</span></label>
+                                    <input type="text" value="{{ $shipping_address?->phone }}">
                                 </div>
-                                <div class="col-md-12 order-notes">
-                                    <div class="checkout-form-list">
-                                        <label>Địa Chỉ<span class="required">*</span></label>
-                                        <textarea rows="5" type="text">
+                            </div>
+                            <div class="col-md-12 order-notes">
+                                <div class="checkout-form-list">
+                                    <label>Địa Chỉ<span class="required">*</span></label>
+                                    <textarea rows="5" type="text">
                                         {{ trim($shipping_address?->address) }}
                                     </textarea>
-                                    </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="your-order mb-30 ">
-                            <h3>Đơn Hàng</h3>
-                            <div class="your-order-table table-responsive">
-                                <table>
-                                    <tfoot>
-                                        <tr class="cart-subtotal">
-                                            <th>Tổng Cộng</th>
-                                            <td><span class="amount">{{ currencyPosition(cartTotal()) }}</span></td>
-                                        </tr>
-                                        @if(session()->has('coupon'))
+                </div>
+                <div class="col-lg-6">
+                    <div class="your-order mb-30 ">
+                        <h3>Đơn Hàng</h3>
+                        <div class="your-order-table table-responsive">
+                            <table>
+                                <tfoot>
+                                    <tr class="cart-subtotal">
+                                        <th>Tổng Cộng</th>
+                                        <td><span class="amount">{{ currencyPosition(cartTotal()) }}</span></td>
+                                    </tr>
+                                    @if (session()->has('coupon'))
                                         <tr class="cart-subtotal">
                                             <th>
                                                 Mã Giảm Giá
@@ -193,95 +196,95 @@
                                             </th>
                                             <td>
                                                 <span class="amount">
-                                                    {{ "-".currencyPosition(session()->get('coupon')['discount']) }}
+                                                    {{ '-' . currencyPosition(session()->get('coupon')['discount']) }}
                                                 </span>
                                             </td>
                                         </tr>
-                                        @endif
-                                        <tr class="shipping">
-                                            <th>Phí Vận Chuyển</th>
-                                            <td>
-                                                <ul>
-                                                    <li>
-                                                        <label>
-                                                            <span class="amount">
-                                                                {{ currencyPosition($shipping_address?->deliveryArea?->delivery_fee) }}
-                                                            </span>
-                                                        </label>
-                                                    </li>
-                                                    <li></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr class="order-total">
-                                            <th>Tổng Thanh Toán</th>
-                                            <td><strong><span class="amount">{{ currencyPosition($checkoutGrandTotal) }}</span></strong>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                                    @endif
+                                    <tr class="shipping">
+                                        <th>Phí Vận Chuyển</th>
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        <span class="amount">
+                                                            {{ currencyPosition($shipping_address?->deliveryArea?->delivery_fee) }}
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Tổng Thanh Toán</th>
+                                        <td><strong><span
+                                                    class="amount">{{ currencyPosition($checkoutGrandTotal) }}</span></strong>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
 
-                            <div class="payment-method">
-                                <div class="accordion" id="checkoutAccordion">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="checkoutOne">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#bankOne" aria-expanded="true" aria-controls="bankOne">
-                                                Chuyển Khoản
-                                            </button>
-                                        </h2>
-                                        <div id="bankOne" class="accordion-collapse collapse"
-                                            aria-labelledby="checkoutOne" data-bs-parent="#checkoutAccordion">
-                                            <div class="accordion-body">
-                                                Make your payment directly into our bank account. Please use your Order ID
-                                                as the payment reference. Your order won’t be shipped until the funds have
-                                                cleared in our account.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="paymentTwo">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#payment" aria-expanded="false"
-                                                aria-controls="payment">
-                                                Thanh Toán Khi Nhận Hàng
-                                            </button>
-                                        </h2>
-                                        <div id="payment" class="accordion-collapse collapse"
-                                            aria-labelledby="paymentTwo" data-bs-parent="#checkoutAccordion">
-                                            <div class="accordion-body">
-                                                Please send your cheque to Store Name, Store Street, Store Town, Store State
-                                                / County, Store Postcode.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="paypalThree">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#paypal" aria-expanded="false"
-                                                aria-controls="paypal">
-                                                Thanh Toán Trực Tuyến
-                                            </button>
-                                        </h2>
-                                        <div id="paypal" class="accordion-collapse collapse"
-                                            aria-labelledby="paypalThree" data-bs-parent="#checkoutAccordion">
-                                            <div class="accordion-body">
-                                                Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                                                account.
-                                            </div>
+                        <div class="payment-method">
+                            <div class="accordion" id="checkoutAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="checkoutOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#bankOne" aria-expanded="true" aria-controls="bankOne">
+                                            Chuyển Khoản
+                                        </button>
+                                    </h2>
+                                    <div id="bankOne" class="accordion-collapse collapse" aria-labelledby="checkoutOne"
+                                        data-bs-parent="#checkoutAccordion">
+                                        <div class="accordion-body">
+                                            Make your payment directly into our bank account. Please use your Order ID
+                                            as the payment reference. Your order won’t be shipped until the funds have
+                                            cleared in our account.
                                         </div>
                                     </div>
                                 </div>
-                                <div class="order-button-payment mt-20">
-                                    <a href="#" class="rr-btn">Trở về giỏ hàng</a>
-                                    <button type="submit" class="rr-btn">Tạo Đơn Hàng</button>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="paymentTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#payment" aria-expanded="false"
+                                            aria-controls="payment">
+                                            Thanh Toán Khi Nhận Hàng
+                                        </button>
+                                    </h2>
+                                    <div id="payment" class="accordion-collapse collapse" aria-labelledby="paymentTwo"
+                                        data-bs-parent="#checkoutAccordion">
+                                        <div class="accordion-body">
+                                            Please send your cheque to Store Name, Store Street, Store Town, Store State
+                                            / County, Store Postcode.
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="paypalThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#paypal" aria-expanded="false"
+                                            aria-controls="paypal">
+                                            Thanh Toán Trực Tuyến
+                                        </button>
+                                    </h2>
+                                    <div id="paypal" class="accordion-collapse collapse" aria-labelledby="paypalThree"
+                                        data-bs-parent="#checkoutAccordion">
+                                        <div class="accordion-body">
+                                            Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
+                                            account.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-button-payment mt-20">
+                                <a href="#" class="rr-btn">Trở về giỏ hàng</a>
+                                <button type="button" id="procceed_payment_btn" class="rr-btn">Tạo Đơn Hàng</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </section>
     <!-- checkout-area end -->
@@ -295,11 +298,11 @@
             }
         });
 
-        $(document).ready(function(){
+        $(document).ready(function() {
             var cartTotal = parseInt("{{ cartTotal() }}");
 
 
-            $('#coupon_form').on('submit', function(){
+            $('#coupon_form').on('submit', function() {
                 let code = $("#coupon_code").val();
                 let subtotal = cartTotal;
 
@@ -308,25 +311,50 @@
 
 
             /* Apply Coupon */
-            function couponApply(code, subtotal){
+            function couponApply(code, subtotal) {
                 $.ajax({
                     method: 'POST',
-                    url: '{{ route("coupon.apply") }}',
+                    url: '{{ route('coupon.apply') }}',
                     data: {
                         code: code,
                         subtotal: subtotal
                     },
-                    success: function(response){
-                        $('#discount').text("-"+response.discount);
+                    success: function(response) {
+                        $('#discount').text("-" + response.discount);
                         $('#total').text(response.totalAmount);
                         toastr.success(response.success);
                     },
-                    error: function(xhr, status, error){
+                    error: function(xhr, status, error) {
                         let errorMessage = xhr.responseJSON.message;
                         toastr.error(errorMessage);
                     }
                 })
             }
+
+            $('#procceed_payment_btn').on('click', function(e) {
+                e.preventDefault();
+                let address_id = $('.shipping_address_id').val();
+
+                if (address_id.length === 0) {
+                    toastr.error('Vui lòng chọn khu vực giao hàng trước khi tạo đơn hàng!');
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',  // Ensure POST request
+                    url: '{{ route('checkout-to-payment') }}',
+                    data: {
+                        id: address_id
+                    },
+                    success: function(response) {
+                        window.location.href = response.redirect_url;
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.error('Đã xảy ra lỗi. Vui lòng thử lại sau!');
+                    }
+                });
+            });
+
 
 
         })

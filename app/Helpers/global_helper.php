@@ -80,7 +80,19 @@ if(!function_exists('grandCartTotal')){
             $total = $cartTotal;
             return $total;
         }
-
-
     }
 }
+
+
+/* Generate invoice_id */
+if(!function_exists('generateInvoiceId')){
+    function generateInvoiceId(){
+        $randomNumber = rand(1, 999999);
+        $currentDateTime = now();
+
+        $invoiceId = $randomNumber.$currentDateTime->format('ymd').$currentDateTime->format('s');
+
+        return $invoiceId;
+    }
+}
+
