@@ -43,7 +43,11 @@ class CheckoutController extends Controller
         $selectedAddress = $address->address.', Khu Vực: '.$address->deliveryArea?->area_name;
 
         session()->put('shipping_address', $selectedAddress);
+        session()->put('delivery_area_id', $address->deliveryArea->id);
         session()->put('delivery_fee', $address->deliveryArea?->delivery_fee);
+
+        $grandTotal = grandCartTotal(session()->get('delivery_fee')); // Calculate grand total with delivery fee
+        session()->put('grandtotal', $grandTotal);
 
         return response(['redirect_url' => route('payment.index')]);
     }

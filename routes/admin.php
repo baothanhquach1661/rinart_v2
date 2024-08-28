@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CtaController;
 use App\Http\Controllers\Admin\DeliveryController;
+use App\Http\Controllers\Admin\PaymentGatewayController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
@@ -76,6 +77,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
 
     /* Delivery routes */
     Route::resource('delivery', DeliveryController::class);
+
+
+    /* Payment Gateway Setting Routes */
+    Route::get('payment-gateway-setting', [PaymentGatewayController::class, 'index'])->name('payment-gateway-setting.index');
+    Route::put('payment-gateway-setting-update', [PaymentGatewayController::class, 'paypalSettingUpdate'])->name('payment-gateway-setting.update');
 
 });
 

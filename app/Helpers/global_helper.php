@@ -68,18 +68,21 @@ if(!function_exists('productTotal')){
 
 /* Calculate Grand Total Price */
 if(!function_exists('grandCartTotal')){
-    function grandCartTotal(){
+    function grandCartTotal($deliveryFee = 0)
+    {
         $cartTotal = cartTotal();
         $total = 0;
+
         if(session()->has('coupon')){
             $discount = session()->get('coupon')['discount'];
             $total = $cartTotal - $discount;
-
-            return $total;
-        }else{
+        } else {
             $total = $cartTotal;
-            return $total;
         }
+
+        $total += $deliveryFee; // Add the delivery fee to the total
+
+        return $total;
     }
 }
 

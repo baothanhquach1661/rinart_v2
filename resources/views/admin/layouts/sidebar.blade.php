@@ -105,6 +105,14 @@
                 <!-- End::slide -->
 
                 <!-- Start::slide -->
+                <li class="slide">
+                    <a href="{{ route('admin.payment-gateway-setting.index') }}" class="side-menu__item">
+                        <span class="side-menu__label">Payment Gateway</span>
+                    </a>
+                </li>
+                <!-- End::slide -->
+
+                <!-- Start::slide -->
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
                         <span class="side-menu__label">Forms</span>

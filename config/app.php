@@ -171,6 +171,7 @@ return [
 
         App\Providers\ViewServiceProvider::class,
         App\Providers\SettingServiceProvider::class,
+        App\Providers\PaymentGatewayServiceProvider::class,
     ])->toArray(),
 
     /*

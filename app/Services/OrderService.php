@@ -16,19 +16,20 @@ class OrderService
             $order = new Order();
             $order->invoice_id = generateInvoiceId();
             $order->user_id = auth()->user()->id;
-            $order->address = session()->get('address');
-            $order->discount = session()->get('coupon')['discount'];
-            $order->delivery_charge = session()->get('delivery_fee');
+            $order->address = session()->get('shipping_address');
+            $order->discount = session()->has('coupon') ? session()->get('coupon')['discount'] : 0;
+            $order->delivery_charge = session()->get('delivery_fee', 0); // Default to 0 if not set
             $order->subtotal = cartTotal();
-            $order->grandtotal = grandCartTotal(session()->get('delivery_fee'));
+            $order->grandtotal = grandCartTotal($order->delivery_charge);
             $order->product_qty = Cart::content()->count();
             $order->payment_method = NULL;
             $order->payment_status = 'pending';
             $order->payment_approve_date = NULL;
             $order->transaction_id = NULL;
-            $order->coupon_info = json_encode(session()->get('coupon'));
+            $order->coupon_info = session()->has('coupon') ? json_encode(session()->get('coupon')) : null;
             $order->currency_name = NULL;
             $order->order_status = 'pending';
+            $order->delivery_area_id = session()->get('delivery_area_id');
             $order->save();
 
             foreach (Cart::content() as $cartItem) {
@@ -55,6 +56,12 @@ class OrderService
                 $orderItem->save();
             }
 
+            /** Putting the grand total to session **/
+            session()->put('grandtotal', $order->grandtotal);
+
+            /** Putting order id to session **/
+            session()->put('order_id', $order->id);
+
             return true;
         }catch(\Exception $e){
             logger($e);
@@ -69,6 +76,12 @@ class OrderService
     /** Clear Session Items **/
     function clearSession()
     {
-
+        Cart::destroy();
+        session()->forget('coupon');
+        session()->forget('address');
+        session()->forget('delivery_fee');
+        session()->forget('delivery_area_id');
+        session()->forget('order_id');
+        session()->forget('grandtotal');
     }
 }

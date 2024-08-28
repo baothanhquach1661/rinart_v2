@@ -176,13 +176,13 @@
                                                     class="amount">{{ currencyPosition($grandtotal) }}</span></strong>
                                         </td>
                                     </tr>
-                                    <tr class="order-total">
+                                    {{-- <tr class="order-total">
                                         <td>
                                             <div class="order-button-payment mt-20">
                                                 <button type="button" id="procceed_payment_btn" class="rr-btn">Tạo Đơn Hàng</button>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tfoot>
                             </table>
                         </div>
@@ -248,7 +248,7 @@
                         paymentPaypal: paymentPaypal
                     },
                     success: function(response){
-                        showLoader();
+                        window.location.href = response.redirect_url;
                     },
                     error: function(xhr, status, error){
                         let errors = xhr.responseJSON.errors;
