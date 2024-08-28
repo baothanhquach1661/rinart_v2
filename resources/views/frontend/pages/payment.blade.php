@@ -49,7 +49,7 @@
                             <div class="accordion" id="checkoutAccordion">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header d-flex align-items-center" id="checkoutOne">
-                                        <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked" data-order_button_text="">
+                                        {{-- <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked" data-order_button_text=""> --}}
                                         <button class="accordion-button flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#bankOne" aria-expanded="true" aria-controls="bankOne">
                                             Chuyển Khoản
                                         </button>
@@ -66,6 +66,9 @@
                                                     </p>
                                                     <p class="note-text"><strong class="text-danger">Lưu ý: </strong><i>Sau khi chuyển khoản sẽ mất 1 - 5p để hệ thống tự động cập nhật đơn hàng. Vui lòng load lại trang để cập nhật hoặc trang sẽ tự động load lại. Xin cảm ơn.</i></p>
                                                 </div>
+                                                <div class="order-button-payment mt-20">
+                                                    <button type="button" id="transfer_method" class="rr-btn">Hoàn Tất</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +76,7 @@
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header d-flex align-items-center" id="paymentThree">
-                                        <input type="radio" class="input-radio" name="payment_method" data-name="paypal" data-order_button_text="">
+                                        {{-- <input type="radio" class="input-radio" name="payment_method" data-name="paypal" data-order_button_text=""> --}}
                                         <button class="accordion-button collapsed flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#paypal" aria-expanded="false" aria-controls="paypal">
                                             Paypal
                                         </button>
@@ -86,9 +89,6 @@
                                                         <img src="{{ asset('frontend/assets/imgs/paypal.png') }}" alt="paypal">
                                                     </div>
                                                 </a>
-                                                <div class="payment-card">
-                                                    <img src="{{ asset('frontend/assets/imgs/stripe.png') }}" alt="Visa">
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +97,7 @@
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header d-flex align-items-center" id="paymentTwo">
-                                        <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" data-order_button_text="">
+                                        {{-- <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" data-order_button_text=""> --}}
                                         <button class="accordion-button collapsed flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#payment" aria-expanded="false" aria-controls="payment">
                                             Thanh Toán Bằng Thẻ
                                         </button>
@@ -176,13 +176,13 @@
                                                     class="amount">{{ currencyPosition($grandtotal) }}</span></strong>
                                         </td>
                                     </tr>
-                                    {{-- <tr class="order-total">
-                                        <td>
+                                    <tr class="order-total">
+                                        {{-- <td>
                                             <div class="order-button-payment mt-20">
-                                                <button type="button" id="procceed_payment_btn" class="rr-btn">Tạo Đơn Hàng</button>
+                                                <button type="button" id="procceed_payment_btn" class="rr-btn">Hoàn Tất</button>
                                             </div>
-                                        </td>
-                                    </tr> --}}
+                                        </td> --}}
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -260,6 +260,22 @@
                         hideLoader();
                     }
                 })
+            });
+
+            $('#transfer_method').on('click', function(){
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('make-bank-transfer.payment') }}',
+                    success: function(response){
+                        window.location.href = response.redirect_url;
+                    },
+                    error: function(xhr, status, error){
+                        let errors = xhr.responseJSON.errors;
+                        $.each(errors, function(index, value){
+                            toastr.error(value);
+                        });
+                    }
+                });
             });
         })
     </script>

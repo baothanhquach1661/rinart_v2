@@ -47,7 +47,7 @@ class PaymentController extends Controller
         ]);
 
         /** Create Order **/
-        if($orderService->createOrder()){
+        if($orderService->createOrder('paypal')){
             // redirect user to payment host
             switch($request->paymentPaypal){
                 case 'paypal':
@@ -140,7 +140,7 @@ class PaymentController extends Controller
             $paymentInfo = [
                 'transaction_id' => $capture['id'],
                 'currency' => $capture['amount']['currency_code'],
-                'status' => $capture['status']
+                'status' => $capture['status'] // 'completed'
             ];
 
             OrderPaymentUpdateEvent::dispatch($orderId, $paymentInfo, 'Paypal');
@@ -151,7 +151,7 @@ class PaymentController extends Controller
 
             return redirect()->route('payment.success');
         }else{
-            return redirect()->route('payment.cancel')->withErrors(['error' => $response['error']['message']]);
+            return redirect()->route('payment.cancel')->withErrors(['error' => 'There was an error processing your payment. Please try again.']);
         }
 
     }
@@ -159,5 +159,31 @@ class PaymentController extends Controller
     function paypalCancel()
     {
         return redirect()->route('payment.cancel');
+    }
+
+
+    public function makeBankTransferPayment(OrderService $orderService)
+    {
+        if ($orderService->createOrder('bank-transfer')) {
+            // Log success message
+            Log::info('Order created successfully for bank transfer.');
+
+            /* Clear Session */
+            $orderService->clearSession();
+
+            // Redirect to a page where you show bank transfer instructions
+            return response()->json(['redirect_url' => route('payment.transfer.success')]);
+        }
+
+        // Log error message
+        Log::error('Order creation failed during bank transfer.');
+
+        return redirect()->route('payment.cancel')->withErrors(['error' => 'There was an error processing your payment. Please try again.']);
+    }
+
+
+    public function bankTransferSuccess()
+    {
+        return view('frontend.pages.payment-transfer-success');
     }
 }

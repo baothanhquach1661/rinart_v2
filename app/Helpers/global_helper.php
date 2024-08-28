@@ -93,7 +93,7 @@ if(!function_exists('generateInvoiceId')){
         $randomNumber = rand(1, 999999);
         $currentDateTime = now();
 
-        $invoiceId = $randomNumber.$currentDateTime->format('ymd').$currentDateTime->format('s');
+        $invoiceId = $randomNumber.$currentDateTime->format('ymd');
 
         return $invoiceId;
     }

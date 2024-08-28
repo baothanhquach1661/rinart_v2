@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CtaController;
 use App\Http\Controllers\Admin\DeliveryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentGatewayController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
@@ -82,6 +83,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     /* Payment Gateway Setting Routes */
     Route::get('payment-gateway-setting', [PaymentGatewayController::class, 'index'])->name('payment-gateway-setting.index');
     Route::put('payment-gateway-setting-update', [PaymentGatewayController::class, 'paypalSettingUpdate'])->name('payment-gateway-setting.update');
+
+
+    /* Orders Routes */
+    Route::get('orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('order-show/{order_id}', [OrderController::class, 'show'])->name('order.show');
 
 });
 

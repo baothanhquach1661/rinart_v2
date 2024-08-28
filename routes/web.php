@@ -56,6 +56,11 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
     Route::get('payment-cancel', [PaymentController::class, 'paymentCancel'])->name('payment.cancel');
+
+    Route::post('bank-transfer-payment', [PaymentController::class, 'makeBankTransferPayment'])->name('make-bank-transfer.payment');
+    Route::get('bank-transfer/success', [PaymentController::class, 'bankTransferSuccess'])->name('payment.transfer.success');
+
+
 });
 
 require __DIR__.'/auth.php';

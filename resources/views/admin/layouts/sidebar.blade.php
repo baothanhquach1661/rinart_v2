@@ -57,6 +57,26 @@
                 <!-- Start::slide -->
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
+                        <span class="side-menu__label">Order</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0);">Section</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.order.index') }}" class="side-menu__item">All Orders</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.cta.index') }}" class="side-menu__item">Pending</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End::slide -->
+
+                <!-- Start::slide -->
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
                         <span class="side-menu__label">Product</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>

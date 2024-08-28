@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 class OrderService
 {
     /** Store Order in Database **/
-    function createOrder()
+    function createOrder($paymentMethod)
     {
         try{
             $order = new Order();
@@ -22,7 +22,7 @@ class OrderService
             $order->subtotal = cartTotal();
             $order->grandtotal = grandCartTotal($order->delivery_charge);
             $order->product_qty = Cart::content()->count();
-            $order->payment_method = NULL;
+            $order->payment_method = $paymentMethod;
             $order->payment_status = 'pending';
             $order->payment_approve_date = NULL;
             $order->transaction_id = NULL;
@@ -67,9 +67,6 @@ class OrderService
             logger($e);
             return false;
         }
-
-
-
 
     }
 
