@@ -87,6 +87,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
 
     /* Orders Routes */
     Route::get('orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('order-invoice/{order_id}', [OrderController::class, 'invoice'])->name('order.invoice');
     Route::get('order-show/{order_id}', [OrderController::class, 'show'])->name('order.show');
 
 });

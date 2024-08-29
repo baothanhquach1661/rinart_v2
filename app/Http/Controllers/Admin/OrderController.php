@@ -14,6 +14,12 @@ class OrderController extends Controller
         return view('admin.order.index', compact('orders'));
     }
 
+    function invoice(string $order_id)
+    {
+        $order = Order::findOrFail($order_id);
+        return view('admin.order.invoice', compact('order'));
+    }
+
     function show(string $order_id)
     {
         $order = Order::findOrFail($order_id);

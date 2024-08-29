@@ -55,7 +55,9 @@
                                                 {{ $order->created_at->format('d-m-Y') }}
                                             </td>
                                             <td>
-                                                {{ $order->invoice_id }}
+                                                <a href="{{ route('admin.order.show', $order->id) }}">
+                                                    {{ $order->invoice_id }}
+                                                </a>
                                             </td>
                                             <td>
                                                 {{ $order->user?->name }}
@@ -81,7 +83,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.order.show', $order->id) }}"
+                                                <a href="{{ route('admin.order.invoice', $order->id) }}"
                                                     class="btn btn-primary">Invoice</a>
                                                 <a href="#" class="btn btn-info"><i class="fe fe-truck"></i></a>
                                                 <a href="#" class="btn btn-danger delete-button">Delete</a>
