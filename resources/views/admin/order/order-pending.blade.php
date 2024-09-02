@@ -6,7 +6,7 @@
         <div class="main-container container-fluid">
             <!-- PAGE-HEADER -->
             <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-                <h1 class="page-title fw-semibold fs-20 mb-0">Order Data Tables</h1>
+                <h1 class="page-title fw-semibold fs-20 mb-0">Order Pending Data Tables</h1>
                 <div class="ms-md-1 ms-0">
                     <nav>
                         <ol class="breadcrumb mb-0">
@@ -22,10 +22,6 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card custom-card">
-                        <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-                            <div class="card-title">Datatable</div>
-                            <a href="{{ route('admin.product.create') }}" class="btn btn-primary">CREATE</a>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="datatable-basic" class="table table-bordered text-nowrap w-100">

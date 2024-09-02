@@ -57,7 +57,7 @@
                 <!-- Start::slide -->
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <span class="side-menu__label">Order</span>
+                        <span class="side-menu__label">Orders</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
                     <ul class="slide-menu child1">
@@ -68,7 +68,19 @@
                             <a href="{{ route('admin.order.index') }}" class="side-menu__item">All Orders</a>
                         </li>
                         <li class="slide">
-                            <a href="{{ route('admin.cta.index') }}" class="side-menu__item">Pending</a>
+                            <a href="{{ route('admin.orders-pending.index') }}" class="side-menu__item">Pending</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.orders-processing.index') }}" class="side-menu__item">Processing</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.orders-shipping.index') }}" class="side-menu__item">Shipping</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.orders-delivered.index') }}" class="side-menu__item">Delivered</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.orders-canceled.index') }}" class="side-menu__item">Canceled</a>
                         </li>
                     </ul>
                 </li>

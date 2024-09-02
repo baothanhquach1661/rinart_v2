@@ -89,6 +89,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('orders', [OrderController::class, 'index'])->name('order.index');
     Route::get('order-invoice/{order_id}', [OrderController::class, 'invoice'])->name('order.invoice');
     Route::get('order-show/{order_id}', [OrderController::class, 'show'])->name('order.show');
+    Route::put('orders/status-update/{order_id}', [OrderController::class, 'orderStatusUpdate'])->name('order.status.update');
+    Route::delete('order/{order_id}', [OrderController::class, 'destroy'])->name('order.destroy');
+
+    Route::get('orders-pending', [OrderController::class, 'pendingOrdersIndex'])->name('orders-pending.index');
+    Route::get('orders-processing', [OrderController::class, 'processingOrdersIndex'])->name('orders-processing.index');
+    Route::get('orders-shipping', [OrderController::class, 'shippingOrdersIndex'])->name('orders-shipping.index');
+    Route::get('orders-delivered', [OrderController::class, 'deliveredOrdersIndex'])->name('orders-delivered.index');
+    Route::get('orders-canceled', [OrderController::class, 'canceledOrdersIndex'])->name('orders-canceled.index');
 
 });
 

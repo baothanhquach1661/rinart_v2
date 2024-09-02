@@ -6,7 +6,7 @@
         <div class="main-container container-fluid">
             <!-- PAGE-HEADER -->
             <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-                <h1 class="page-title fw-semibold fs-20 mb-0">Order Data Tables</h1>
+                <h1 class="page-title fw-semibold fs-20 mb-0">Order Delivered Data Tables</h1>
                 <div class="ms-md-1 ms-0">
                     <nav>
                         <ol class="breadcrumb mb-0">
@@ -22,10 +22,6 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card custom-card">
-                        <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-                            <div class="card-title">Datatable</div>
-                            <a href="{{ route('admin.product.create') }}" class="btn btn-primary">CREATE</a>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="datatable-basic" class="table table-bordered text-nowrap w-100">
@@ -123,17 +119,17 @@
                 <div class="modal-body">
                     <label for="payment_status" class="form-label"><strong>Payment Status</strong></label>
                     <select name="payment_status" id="payment_status" class="form-select mb-3">
-                        <option value="pending" {{ $order->payment_status == 'pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="completed" {{ $order->payment_status == 'completed' ? 'selected' : '' }}>Completed</option>
+                        <option value="pending" {{ @$order->payment_status == 'pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="completed" {{ @$order->payment_status == 'completed' ? 'selected' : '' }}>Completed</option>
                     </select>
 
                     <label for="order_status" class="form-label"><strong>Order Status</strong></label>
                     <select name="order_status" id="order_status" class="form-select mb-3">
-                        <option value="pending" {{ $order->order_status == 'pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="processing" {{ $order->order_status == 'processing' ? 'selected' : '' }}>Processing</option>
-                        <option value="shipping" {{ $order->order_status == 'shipping' ? 'selected' : '' }}>Shipping</option>
-                        <option value="delivered" {{ $order->order_status == 'delivered' ? 'selected' : '' }}>Delivered</option>
-                        <option value="canceled" {{ $order->order_status == 'canceled' ? 'selected' : '' }}>Canceled</option>
+                        <option value="pending" {{ @$order->order_status == 'pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="processing" {{ @$order->order_status == 'processing' ? 'selected' : '' }}>Processing</option>
+                        <option value="shipping" {{ @$order->order_status == 'shipping' ? 'selected' : '' }}>Shipping</option>
+                        <option value="delivered" {{ @$order->order_status == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                        <option value="canceled" {{ @$order->order_status == 'canceled' ? 'selected' : '' }}>Canceled</option>
                     </select>
                 </div>
                 <div class="modal-footer">

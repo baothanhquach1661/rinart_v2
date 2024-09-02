@@ -425,6 +425,11 @@
                                                                 style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
                                                                 {{ $secondPart }} <br> Địa Chỉ: {{ $firstPart }}.
                                                             </td>
+                                                        <tr>
+                                                            <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
+                                                                SĐT: {{ $order->userAddress->phone }}
+                                                            </td>
+                                                        </tr>
                                                         </tr>
                                                         <tr>
                                                             <td width="100%" height="15"></td>

@@ -140,7 +140,7 @@ class PaymentController extends Controller
             $paymentInfo = [
                 'transaction_id' => $capture['id'],
                 'currency' => $capture['amount']['currency_code'],
-                'status' => $capture['status'] // 'completed'
+                'status' => 'completed'
             ];
 
             OrderPaymentUpdateEvent::dispatch($orderId, $paymentInfo, 'Paypal');

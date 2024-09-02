@@ -45,6 +45,7 @@ class CheckoutController extends Controller
         session()->put('shipping_address', $selectedAddress);
         session()->put('delivery_area_id', $address->deliveryArea->id);
         session()->put('delivery_fee', $address->deliveryArea?->delivery_fee);
+        session()->put('address_id', $address->id);
 
         $grandTotal = grandCartTotal(session()->get('delivery_fee')); // Calculate grand total with delivery fee
         session()->put('grandtotal', $grandTotal);
