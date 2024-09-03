@@ -46,14 +46,14 @@
                 <nav class="profile-nav">
                     <ul>
                         <li><a href="#" class="tab-link-profile active" data-tab="profile">Profile</a></li>
-                        <li><a href="#" class="tab-link-profile" data-tab="shipping-address">Shipping Address</a></li>
-                        <li><a href="#" class="tab-link-profile" data-tab="orders">Order History</a></li>
-                        <li><a href="#" class="tab-link-profile" data-tab="settings">Account Settings</a></li>
+                        <li><a href="#" class="tab-link-profile" data-tab="shipping-address">Thông Tin Giao Hàng</a></li>
+                        <li><a href="#" class="tab-link-profile" data-tab="orders">Đơn Hàng</a></li>
+                        <li><a href="#" class="tab-link-profile" data-tab="settings">Tài Khoản</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();this.closest('form').submit();" >Logout
+                                    onclick="event.preventDefault();this.closest('form').submit();" >Đăng Xuất
                                 </a>
                             </form>
                         </li>
@@ -119,6 +119,27 @@
                 // Hide all tab contents and show the active one
                 $('.tab-content-profile').removeClass('active').hide();
                 $('#' + tab).addClass('active').show();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.detail-custom-btn').click(function() {
+                var invoiceId = $(this).closest('tr').find('td:first').text().replace('#', ''); // Remove '#' from the invoice_id
+
+                $.ajax({
+                    url: '/orders/' + invoiceId + '/details',  // Pass the invoice_id in the URL
+                    type: 'GET',
+                    success: function(data) {
+                        $('#orderDetailContent').html(data);
+                        $('#customOrderDetailModal').modal('show');
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);  // This logs the error response to the console
+                        alert('Failed to retrieve order details.');
+                    }
+                });
             });
         });
     </script>

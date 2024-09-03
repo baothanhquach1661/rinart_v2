@@ -341,6 +341,75 @@
     transition: background-color 0.3s ease;
 }
 
+.detail-custom-btn {
+    background-color: #295F98; /* Set a nice blue color */
+    color: white; /* White text color */
+    padding: 8px 16px; /* Add some padding to make the button larger */
+    border-radius: 4px; /* Rounded corners */
+    border: none; /* Remove border */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    font-size: 14px; /* Increase font size slightly */
+    font-weight: 600; /* Make the text bold */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.detail-custom-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: #f1f1f1; /* Slightly lighter text color on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+.detail-custom-btn:active {
+    background-color: #295F98; /* Even darker blue when clicked */
+}
+
+/* Modal Header Customization */
+.custom-modal-header {
+    background-color: white; /* Dark background */
+    color: #ffffff; /* White text color */
+}
+
+.custom-modal-title {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+/* Modal Body Customization */
+.custom-modal-body {
+    font-size: 1rem;
+    color: #444444; /* Gray text color */
+}
+
+/* Item List Customization */
+.custom-modal-body ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+}
+
+.custom-modal-body ul li {
+    background-color: #f8f9fa; /* Light background for each item */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #dddddd; /* Light border */
+}
+
+/* Modal Footer Customization */
+.custom-modal-footer {
+    background-color: #f1f1f1; /* Light background */
+    border-top: none; /* Remove default border */
+}
+
+.custom-modal-footer .btn-secondary {
+    background-color: #2b3a42; /* Match header color */
+    border: none;
+}
+
+.custom-modal-footer .btn-secondary:hover {
+    background-color: #3e4c54; /* Darker on hover */
+}
+
 
 
 

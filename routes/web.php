@@ -60,6 +60,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('bank-transfer-payment', [PaymentController::class, 'makeBankTransferPayment'])->name('make-bank-transfer.payment');
     Route::get('bank-transfer/success', [PaymentController::class, 'bankTransferSuccess'])->name('payment.transfer.success');
 
+    Route::get('orders/{order}/details', [UserProfileController::class, 'showOrderDetails'])->name('orders.details');
+
 
 });
 

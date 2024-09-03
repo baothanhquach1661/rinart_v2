@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Delivery;
+use App\Models\Order;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,8 @@ class UserProfileController extends Controller
     {
         $delivery_areas = Delivery::where('status', 1)->get();
         $user_shipping_address = Address::where('user_id', Auth::user()->id)->first();
-        return view('frontend.dashboard.index', compact('delivery_areas', 'user_shipping_address'));
+        $orders = Order::where('user_id', auth()->user()->id)->get();
+        return view('frontend.dashboard.index', compact('delivery_areas', 'user_shipping_address', 'orders'));
     }
 
     function userProfileUpdate(Request $request)
@@ -96,5 +98,13 @@ class UserProfileController extends Controller
         return redirect()->back()->with('success', 'Profile has been updated successfully!');
     }
 
+    /* show order detail in user dashboard */
+    public function showOrderDetails($invoiceId)
+    {
+        // Find the order by invoice_id instead of id
+        $order = Order::with('orderItems.product')->where('invoice_id', $invoiceId)->firstOrFail();
+
+        return view('frontend.dashboard.section.order-details', compact('order'));
+    }
 
 }
