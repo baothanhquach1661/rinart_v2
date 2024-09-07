@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\RTOderPlacedNotificationEvent;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\CartController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,7 +63,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('bank-transfer/success', [PaymentController::class, 'bankTransferSuccess'])->name('payment.transfer.success');
 
     Route::get('orders/{order}/details', [UserProfileController::class, 'showOrderDetails'])->name('orders.details');
-
 
 });
 

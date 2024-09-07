@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Events\OrderPaymentUpdateEvent;
 use App\Events\OrderPlacedNotificationEvent;
+use App\Events\RTOderPlacedNotificationEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Services\OrderService;
@@ -145,6 +146,7 @@ class PaymentController extends Controller
 
             OrderPaymentUpdateEvent::dispatch($orderId, $paymentInfo, 'Paypal');
             OrderPlacedNotificationEvent::dispatch($orderId);
+            RTOderPlacedNotificationEvent::dispatch(Order::find($orderId));
 
             /* Clear Session */
             $orderService->clearSession();
@@ -166,7 +168,10 @@ class PaymentController extends Controller
     {
         if ($orderService->createOrder('bank-transfer')) {
             // Log success message
+            $orderId = session()->get('order_id');
             Log::info('Order created successfully for bank transfer.');
+
+            RTOderPlacedNotificationEvent::dispatch(Order::find($orderId));
 
             /* Clear Session */
             $orderService->clearSession();

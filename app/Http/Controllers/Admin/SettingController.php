@@ -34,6 +34,28 @@ class SettingController extends Controller
         $settingService->clearCachedSettings();
 
         return redirect()->back()->with('success', 'Data has been Updated successfully!');
+    }
 
+
+    function updatePusherSetting(Request $request)
+    {
+        $validateData = $request->validate([
+            'pusher_app_id' => ['required', 'max:255'],
+            'pusher_key' => ['required', 'max:50'],
+            'pusher_secret' => ['required', 'max:50'],
+            'pusher_cluster' => ['required'],
+        ]);
+
+        foreach($validateData as $key => $value){
+            Setting::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
+        }
+
+        $settingService = app(SettingService::class);
+        $settingService->clearCachedSettings();
+
+        return redirect()->back()->with('success', 'Data has been Updated successfully!');
     }
 }

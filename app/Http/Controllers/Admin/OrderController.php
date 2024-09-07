@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderPlacedNotification;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -23,6 +24,7 @@ class OrderController extends Controller
     function show(string $order_id)
     {
         $order = Order::findOrFail($order_id);
+        $notification = OrderPlacedNotification::where('order_id', $order->id)->update(['seen' => 1]);
         return view('admin.order.show', compact('order'));
     }
 

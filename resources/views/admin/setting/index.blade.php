@@ -35,7 +35,7 @@
                                                     <a class="nav-link active" data-bs-toggle="tab" role="tab" aria-current="page" href="#general-setting-vertical" aria-selected="false" tabindex="-1">General Setting</a>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#about-vertical" aria-selected="false" tabindex="-1">About</a>
+                                                    <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#pusher-vertical" aria-selected="false" tabindex="-1">Pusher Setting</a>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <a class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#services-vertical" aria-selected="false" tabindex="-1">Services</a>
@@ -47,53 +47,11 @@
                                         </div>
                                         <div class="col-xl-9">
                                             <div class="tab-content mt-2 mt-xl-0">
-                                                <div class="tab-pane text-muted active" id="general-setting-vertical" role="tabpanel">
-                                                    <form action="{{ route('admin.general-setting.update') }}" method="POST">
-                                                        @csrf
-                                                        @method("PUT")
-                                                        <div class="form-group mb-3">
-                                                            <label for="">Site Name</label>
-                                                            <input name="site_name" type="text" class="form-control"
-                                                                value="{{ config('settings.site_name') }}">
-                                                        </div>
-                                                        <div class="form-group mb-3">
-                                                            <label for="">Default Currency</label>
-                                                            <select name="site_default_currency" id="" class="js-example-basic-single">
-                                                                <option @selected(config('settings.site_default_currency') === 'usd') value="usd">USD</option>
-                                                                <option @selected(config('settings.site_default_currency') === 'vnd') value="vnd">VND</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group mb-3">
-                                                                    <label for="">Currency Icon</label>
-                                                                    <input name="site_currency_icon" type="text" class="form-control"
-                                                                        value="{{ config('settings.site_currency_icon') }}" >
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group mb-3">
-                                                                    <label for="">Currency Icon Position</label>
 
-                                                                    <select name="site_currency_position" id="" class="js-example-basic-single">
-                                                                        <option @selected(config('settings.site_currency_position') === 'right') value="right">Right</option>
-                                                                        <option @selected(config('settings.site_currency_position') === 'left') value="left">Left</option>
-                                                                    </select>
+                                                @include('admin.setting.section.general-setting')
 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary mt-2">SAVE</button>
-                                                    </form>
-                                                </div>
-                                                <div class="tab-pane text-muted" id="about-vertical" role="tabpanel">
-                                                    How travel coupons make you a better lover. Why cultural solutions
-                                                    are the new black. Why mom was right about travel insurances. How
-                                                    family trip ideas can help you predict the future. <b>How carnival
-                                                        cruises make you a better lover</b>. Why you'll never succeed at
-                                                    daily deals. 11 ways cheapest flights can find you the love of your
-                                                    life. The complete beginner's guide to mission trips.
-                                                </div>
+                                                @include('admin.setting.section.pusher-setting')
+
                                                 <div class="tab-pane text-muted" id="services-vertical" role="tabpanel">
                                                     Unbelievable healthy snack success stories. 12 facts about safe food
                                                     handling tips that will impress your friends. Restaurant weeks by
@@ -102,6 +60,7 @@
                                                     The complete beginner's guide to cooking healthy food. Unbelievable
                                                     food stamp success stories.
                                                 </div>
+
                                                 <div class="tab-pane text-muted" id="contacts-vertical" role="tabpanel">
                                                     Why delicious magazines are killing you. Why our world would end if
                                                     restaurants disappeared. Why restaurants are on crack about
@@ -110,6 +69,7 @@
                                                     healthy snacks disappeared. Why the world would end without mexican
                                                     food. The evolution of chef uniforms.
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
