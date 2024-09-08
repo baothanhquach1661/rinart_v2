@@ -112,6 +112,22 @@
                 </li>
                 <!-- End::slide -->
 
+                <!-- Start::DAILY OFFER -->
+                {{-- <li class="slide">
+                    <a href="{{ route('admin.daily-offer.index') }}" class="side-menu__item">
+                        <span class="side-menu__label">Daily Offer</span>
+                    </a>
+                </li> --}}
+                <!-- End::DAILY OFFER -->
+
+                <!-- Start::slide -->
+                <li class="slide">
+                    <a href="{{ route('admin.coupon.index') }}" class="side-menu__item">
+                        <span class="side-menu__label">Coupon</span>
+                    </a>
+                </li>
+                <!-- End::slide -->
+
                 <!-- Start::slide -->
                 <li class="slide">
                     <a href="{{ route('admin.coupon.index') }}" class="side-menu__item">

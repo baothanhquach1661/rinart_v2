@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CtaController;
+use App\Http\Controllers\Admin\DailyOfferController;
 use App\Http\Controllers\Admin\DeliveryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentGatewayController;
@@ -79,6 +80,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
 
     /* Delivery routes */
     Route::resource('delivery', DeliveryController::class);
+
+
+    /* Daily Offer routes */
+    Route::resource('daily-offer', DailyOfferController::class);
 
 
     /* Payment Gateway Setting Routes */

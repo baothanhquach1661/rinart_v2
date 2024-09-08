@@ -1,4 +1,4 @@
-<section class="cta-3__area position-relative" data-background="{{ asset('frontend/assets/imgs/cta-3/cta-3_bg.png') }}">
+<section class="cta-3__area position-relative mb-50" data-background="{{ asset('frontend/assets/imgs/cta-3/cta-3_bg.png') }}">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">

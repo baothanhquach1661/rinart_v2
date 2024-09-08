@@ -9,9 +9,9 @@
     @include('frontend.components.feature')
     <!-- feature area end -->
 
-    <!-- small feature3 -area start -->
-    {{-- @include('frontend.components.small-feature') --}}
-    <!-- small feature-3-area end -->
+    <!-- daily-offer -area start -->
+    {{-- @include('frontend.components.daily-offer') --}}
+    <!-- daily-offer-area end -->
 
     <!-- feature product area start -->
     @include('frontend.components.features-product')
