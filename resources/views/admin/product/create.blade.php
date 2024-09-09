@@ -57,6 +57,7 @@
                                         <textarea class="form-control" name="short_description" rows="3">{{ old('short_description') }}</textarea>
                                     </div>
                                     <div class="col-md-12 mb-3">
+                                        <label class="form-label">Main Description</label>
                                         <textarea id="summernote" class="form-control" name="long_description">
                                             {!! old('long_description') !!}
                                         </textarea>

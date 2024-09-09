@@ -90,10 +90,6 @@
     @include('frontend.layouts.backtotop')
     <!-- Backtotop end -->
 
-    <!-- Offcanvas area start -->
-    @include('frontend.layouts.offcanvas')
-    <!-- Offcanvas area start -->
-
     <!-- Header area start -->
     @include('frontend.layouts.header')
     <!-- Header area end -->

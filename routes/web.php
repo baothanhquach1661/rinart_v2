@@ -2,6 +2,7 @@
 
 use App\Events\RTOderPlacedNotificationEvent;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Frontend\ServiceDetailController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -95,6 +96,10 @@ Route::get('cart-destroy', [CartController::class, 'clearCart'])->name('cart.des
 /* Coupon Apply */
 Route::post('coupon-apply', [CartController::class, 'couponApply'])->name('coupon.apply');
 Route::get('coupon-remove', [CartController::class, 'removeCoupon'])->name('coupon.remove');
+
+
+/* Services Detail Route */
+Route::get('service-details/{slug}', [ServiceDetailController::class, 'showServiceDetail'])->name('service-detail.show');
 
 
 

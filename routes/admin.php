@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
 use App\Http\Controllers\Admin\ProductVariantItemController;
+use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -84,6 +85,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
 
     /* Daily Offer routes */
     Route::resource('daily-offer', DailyOfferController::class);
+
+
+    /* Service Detail routes */
+    Route::resource('service', ServicesController::class);
 
 
     /* Payment Gateway Setting Routes */

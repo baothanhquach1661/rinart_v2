@@ -99,3 +99,12 @@ if(!function_exists('generateInvoiceId')){
     }
 }
 
+
+/* Product Discount show in percent */
+if(!function_exists('discountInPercent')){
+    function discountInPercent($regularPrice, $discountPrice)
+    {
+        $result = (($regularPrice - $discountPrice) / $regularPrice) * 100;
+        return round($result);
+    }
+}

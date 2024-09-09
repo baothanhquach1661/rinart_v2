@@ -50,7 +50,11 @@
                                             <div class="rr-fea-product__thumb fix p-relative">
                                                 <img src="{{ asset($product->thumb_image) }}" alt="img not found">
                                                 <div class="rr-fea-product__thumb-text">
-                                                    <span>-60%</span>
+                                                    @if($product->discount_price > 0)
+                                                    <span>-{{ discountInPercent($product->price, $product->discount_price) }}%</span>
+                                                    @else
+                                                    <span>HOT</span>
+                                                    @endif
                                                 </div>
                                                 <div class="rr-fea-product__icon-box icon-box-3 rr-product-action">
                                                     <div class="product-action-btn mb-6">
@@ -79,9 +83,9 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="product-action-btn-5">
+                                                {{-- <div class="product-action-btn-5">
                                                     <h5>Hot</h5>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="rr-fea-product__content">
                                                 <h4 class="rr-fea-product__title-sm"><a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></h4>
@@ -140,7 +144,11 @@
                                                 <div class="rr-fea-product__thumb fix p-relative">
                                                     <img src="{{ asset($product->thumb_image) }}" alt="img not found">
                                                     <div class="rr-fea-product__thumb-text">
-                                                        <span>-80%</span>
+                                                        @if($product->discount_price > 0)
+                                                        <span>-{{ discountInPercent($product->price, $product->discount_price) }}%</span>
+                                                        @else
+                                                        <span>NEW</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="rr-fea-product__content">

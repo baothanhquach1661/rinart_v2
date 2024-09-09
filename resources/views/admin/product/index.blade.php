@@ -50,7 +50,7 @@
                                                 {{ $product->name }}</a>
                                             </td>
                                             <td>
-                                                {{ $product->price }}
+                                                {{ currencyPosition($product->price) }}
                                             </td>
                                             <td>
                                                 @if ($product->status == 1)

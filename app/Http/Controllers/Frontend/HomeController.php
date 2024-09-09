@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Cta;
 use App\Models\Product;
+use App\Models\Services;
 use App\Models\Slider;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -17,11 +18,13 @@ class HomeController extends Controller
         $sliders = Slider::where('status', 1)->get();
         $cta = Cta::first();
         $categories = Category::where(['status' => 1, 'show_at_home' => 1])->get();
+        $services = Services::orderBy('index')->take(6)->get();
         return view('frontend.home.index',
             compact(
                 'sliders',
                 'cta',
-                'categories'
+                'categories',
+                'services'
             ));
     }
 

@@ -6,7 +6,7 @@
     <!-- Banner area end -->
 
     <!-- feature area start -->
-    @include('frontend.components.feature')
+    @include('frontend.components.services')
     <!-- feature area end -->
 
     <!-- daily-offer -area start -->

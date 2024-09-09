@@ -37,26 +37,6 @@
                 <!-- Start::slide -->
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <span class="side-menu__label">Template Section</span>
-                        <i class="fe fe-chevron-right side-menu__angle"></i>
-                    </a>
-                    <ul class="slide-menu child1">
-                        <li class="slide side-menu__label1">
-                            <a href="javascript:void(0);">Section</a>
-                        </li>
-                        <li class="slide">
-                            <a href="{{ route('admin.slider.index') }}" class="side-menu__item">Slider</a>
-                        </li>
-                        <li class="slide">
-                            <a href="{{ route('admin.cta.index') }}" class="side-menu__item">CTA</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- End::slide -->
-
-                <!-- Start::slide -->
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">
                         <span class="side-menu__label">Orders</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
@@ -120,21 +100,13 @@
                 </li> --}}
                 <!-- End::DAILY OFFER -->
 
-                <!-- Start::slide -->
+                <!-- Start::Coupon -->
                 <li class="slide">
                     <a href="{{ route('admin.coupon.index') }}" class="side-menu__item">
                         <span class="side-menu__label">Coupon</span>
                     </a>
                 </li>
-                <!-- End::slide -->
-
-                <!-- Start::slide -->
-                <li class="slide">
-                    <a href="{{ route('admin.coupon.index') }}" class="side-menu__item">
-                        <span class="side-menu__label">Coupon</span>
-                    </a>
-                </li>
-                <!-- End::slide -->
+                <!-- End::Coupon -->
 
                 <!-- Start::slide -->
                 <li class="slide">
@@ -144,21 +116,65 @@
                 </li>
                 <!-- End::slide -->
 
-                <!-- Start::slide -->
-                <li class="slide">
-                    <a href="{{ route('admin.setting.index') }}" class="side-menu__item">
-                        <span class="side-menu__label">Setting</span>
-                    </a>
-                </li>
-                <!-- End::slide -->
 
-                <!-- Start::slide -->
-                <li class="slide">
-                    <a href="{{ route('admin.payment-gateway-setting.index') }}" class="side-menu__item">
-                        <span class="side-menu__label">Payment Gateway</span>
+                <!-- Start::Services Section -->
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <span class="side-menu__label">Services</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0);">Section</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.service.index') }}" class="side-menu__item">Our Services</a>
+                        </li>
+                    </ul>
                 </li>
-                <!-- End::slide -->
+                <!-- End::Services Section -->
+
+                <!-- Start::Setting -->
+                @if(auth()->user()->role_special === 'super_admin')
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <span class="side-menu__label">Setting</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0);">Section</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.setting.index') }}" class="side-menu__item">Setting</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.payment-gateway-setting.index') }}" class="side-menu__item">Payment Gateway</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                <!-- End::Setting -->
+
+                <!-- Start::Template Section -->
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <span class="side-menu__label">Template Section</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0);">Section</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.slider.index') }}" class="side-menu__item">Slider</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.cta.index') }}" class="side-menu__item">CTA</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End::Template Section -->
 
                 <!-- Start::slide -->
                 <li class="slide has-sub">
