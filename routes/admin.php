@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CtaController;
@@ -89,6 +91,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
 
     /* Service Detail routes */
     Route::resource('service', ServicesController::class);
+
+
+    /* Blog Category routes */
+    Route::resource('blog-category', BlogCategoryController::class);
+
+
+    /* Blog routes */
+    Route::resource('blog', BlogController::class);
+    Route::get('blog-comments', [BlogController::class, 'blogComments'])->name('blog.comments');
+    Route::get('blog-comments/{id}', [BlogController::class, 'blogCommentStatusUpdate'])->name('blog.comments.status.update');
+    Route::delete('blog-comments/delete/{id}', [BlogController::class, 'blogCommentDestroy'])->name('blog.comments.destroy');
 
 
     /* Payment Gateway Setting Routes */

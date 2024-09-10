@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\BlogCategory;
 use App\Models\Category;
 use App\Models\Cta;
 use App\Models\Product;
@@ -43,5 +45,26 @@ class HomeController extends Controller
         $product = Product::with(['variants'])->findOrFail($productId);
 
         return view('frontend.layouts.ajax-files.product-popup-modal', compact('product'))->render();
+    }
+
+
+    function blog()
+    {
+        $blogs = Blog::where('status', 1)->latest()->paginate(6);
+        return view('frontend.blog.blog', compact('blogs'));
+    }
+
+
+    function blogDetails(String $slug)
+    {
+        $blog = Blog::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $blog_categories = BlogCategory::where('status', 1)
+            ->where('id', '!=', $blog->blog_category_id)
+            ->get();
+        $recent_blogs = Blog::where('status', 1)
+            ->where('id', '!=', $blog->id)
+            ->latest()->take(3)
+            ->get();
+        return view('frontend.blog.blog-details', compact('blog', 'blog_categories', 'recent_blogs'));
     }
 }

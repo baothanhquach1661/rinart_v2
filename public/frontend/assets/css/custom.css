@@ -410,6 +410,65 @@
     background-color: #3e4c54; /* Darker on hover */
 }
 
+.latest-blog__area .bottom-button span {
+    color: var(--rr-heading-primary);
+    background: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    transition: 0.3s;
+    margin-left: 8px;
+    margin-right: 8px;
+    border: 1px solid transparent;
+}
+
+.latest-blog__area .bottom-button .active span {
+    color: white;
+    background-color: #FF3D00; /* Customize your active background color */
+    border-color: #FF3D00; /* Customize your active border color */
+}
+
+.latest-blog__area .bottom-button .active span:hover,
+.latest-blog__area .bottom-button .active span:focus {
+    border-color: #FF3D00; /* Hover effect for active item */
+}
+
+.latest-blog__area .bottom-button a {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.btn__container-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-f {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: white;
+    background-color: #8EACCD;
+    transition: transform 0.2s ease-in-out;
+    border-radius: 5px;
+}
+
+.btn-f i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.btn-f:hover {
+    background-color: #8EACCD;
+    transform: scale(1.1);
+}
+
 
 
 

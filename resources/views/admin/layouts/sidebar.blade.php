@@ -100,21 +100,23 @@
                 </li> --}}
                 <!-- End::DAILY OFFER -->
 
-                <!-- Start::Coupon -->
-                <li class="slide">
-                    <a href="{{ route('admin.coupon.index') }}" class="side-menu__item">
-                        <span class="side-menu__label">Coupon</span>
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <span class="side-menu__label">Ecommerce</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0);">Section</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.coupon.index') }}" class="side-menu__item">Coupon</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.delivery.index') }}" class="side-menu__item">Delivery Area</a>
+                        </li>
+                    </ul>
                 </li>
-                <!-- End::Coupon -->
-
-                <!-- Start::slide -->
-                <li class="slide">
-                    <a href="{{ route('admin.delivery.index') }}" class="side-menu__item">
-                        <span class="side-menu__label">Delivery Area</span>
-                    </a>
-                </li>
-                <!-- End::slide -->
 
 
                 <!-- Start::Services Section -->
@@ -133,6 +135,29 @@
                     </ul>
                 </li>
                 <!-- End::Services Section -->
+
+                <!-- Start::DAILY OFFER -->
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <span class="side-menu__label">Blog</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0);">Section</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.blog-category.index') }}" class="side-menu__item">Blog Categories</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.blog.index') }}" class="side-menu__item">Blogs</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('admin.blog.comments') }}" class="side-menu__item">Comments</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End::DAILY OFFER -->
 
                 <!-- Start::Setting -->
                 @if(auth()->user()->role_special === 'super_admin')

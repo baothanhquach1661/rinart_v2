@@ -8240,6 +8240,7 @@ body .ui-tooltip {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
+
 .latest-blog__area .bottom-button a:hover {
   background: var(--rr-theme-primary);
   color: var(--rr-common-white);

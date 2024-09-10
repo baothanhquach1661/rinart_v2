@@ -2,6 +2,7 @@
 
 use App\Events\RTOderPlacedNotificationEvent;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ServiceDetailController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\CartController;
@@ -100,6 +101,14 @@ Route::get('coupon-remove', [CartController::class, 'removeCoupon'])->name('coup
 
 /* Services Detail Route */
 Route::get('service-details/{slug}', [ServiceDetailController::class, 'showServiceDetail'])->name('service-detail.show');
+
+
+/* Blog Route */
+Route::get('blogs', [HomeController::class, 'blog'])->name('blog.show');
+
+/* Blog Detail Route */
+Route::get('blog/{slug}', [HomeController::class, 'blogDetails'])->name('blog.details');
+Route::post('blog/commemt', [BlogController::class, 'storeCommemt'])->name('blog.comment.store');
 
 
 

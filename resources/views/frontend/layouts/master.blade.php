@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    @yield('og_meta_tag_section')
+
     <title>Printfix - Printing Services Company HTML5 Template</title>
     <meta name="description" content="">
     <meta name="author" content="soukhinkhan">
